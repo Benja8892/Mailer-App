@@ -44,13 +44,14 @@ def create():
         if len(errors) == 0:
             send(email,subject,content)
             db, c = get_db()
-            c.execute("INSERT INTO email(email,subject, content) VALUES (%s, %s, %s)",(email, subject, content))
+            c.execute("INSERT INTO email(email,subject, content) VALUES (%s, %s, %s)", (email, subject, content))
             db.commit()
+
             return redirect(url_for("mail.index"))
         else:
             for error in errors:
                 flash(error)
-        print(errors)
+        
     return render_template("mails/create.html")
 
 def send(to, subject, content):
