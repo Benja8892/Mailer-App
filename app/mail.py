@@ -55,7 +55,7 @@ def create():
     return render_template("mails/create.html")
 
 def send(to, subject, content):
-    sg = sendgrid.SendGridAPIClient(api_key=current_app.config['SENDGRID_API_KEY'])
+    sg = sendgrid.SendGridAPIClient(api_key=current_app.config['SENDGRID_KEY'])
     from_email = Email(current_app.config["FROM_EMAIL"])
     to_email = To(to)
     content = Content("text/plain", content)
